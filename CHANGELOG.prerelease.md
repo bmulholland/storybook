@@ -1,3 +1,8 @@
+## 8.4.0-alpha.4
+
+- Blocks: Prebundle `es-toolkit` - [#29259](https://github.com/storybookjs/storybook/pull/29259), thanks @JReinhold!
+- Maintenance: Upgrade `esbuild`, broadening version range - [#29254](https://github.com/storybookjs/storybook/pull/29254), thanks @ndelangen!
+
 ## 8.4.0-alpha.3
 
 - CLI: Migrate from `chalk` to `picocolors` - [#28262](https://github.com/storybookjs/storybook/pull/28262), thanks @43081j!
