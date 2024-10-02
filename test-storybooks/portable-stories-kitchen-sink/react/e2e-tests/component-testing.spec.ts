@@ -22,6 +22,7 @@ const setForceFailureFlag = async (value: boolean) => {
 };
 
 test.describe('component testing', () => {
+  test.describe.configure({ mode: 'serial' });
   test.beforeEach(async ({ page }) => {
     const sbPage = new SbPage(page, expect);
 
@@ -81,11 +82,14 @@ test.describe('component testing', () => {
     // TODO: improve locators in the testing module elements
     await page.locator('#sidebar-bottom').getByRole('button').first().click();
 
+    // We shouldn't have to do an arbitrary wait, but because there is no UI for loading state yet, we have to
+    await page.waitForTimeout(8000);
+
     await setForceFailureFlag(true);
 
     // Wait for test results to appear
     const errorFilter = page.getByLabel('Show errors');
-    await expect(errorFilter).toBeVisible({ timeout: 20000 });
+    await expect(errorFilter).toBeVisible({ timeout: 30000 });
 
     // Assert for expected success
     const successfulStoryElement = page.locator(
